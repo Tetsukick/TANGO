@@ -6,7 +6,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: Header(),
+        body: MyListView(),
+      )
     );
   }
 }
@@ -24,6 +28,27 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: MyListView(),
       ),
+    );
+  }
+}
+
+class Header extends StatelessWidget with PreferredSizeWidget{
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('Edit'),
+        ),
+      ],
+      title: Text('ホーム'),
+      backgroundColor: Colors.grey[200],
+      centerTitle: true,
+      elevation: 0.0,
     );
   }
 }
