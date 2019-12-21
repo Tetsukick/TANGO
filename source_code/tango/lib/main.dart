@@ -41,8 +41,14 @@ class Header extends StatelessWidget with PreferredSizeWidget{
     return AppBar(
       actions: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text('Edit'),
+          padding: const EdgeInsets.all(16),
+          child: Text(
+              'Edit',
+            style: TextStyle(
+              color: Colors.blueAccent,
+              fontSize: 18,
+            ),
+          ),
         ),
       ],
       title: Row(
@@ -54,7 +60,6 @@ class Header extends StatelessWidget with PreferredSizeWidget{
             height: 34,
           )
         ],
-
       ),
       backgroundColor: Colors.grey[200],
       centerTitle: true,
