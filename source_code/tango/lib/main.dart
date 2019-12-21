@@ -45,7 +45,17 @@ class Header extends StatelessWidget with PreferredSizeWidget{
           child: Text('Edit'),
         ),
       ],
-      title: Text('ホーム'),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/logo_tango.png',
+            fit: BoxFit.contain,
+            height: 34,
+          )
+        ],
+
+      ),
       backgroundColor: Colors.grey[200],
       centerTitle: true,
       elevation: 0.0,
