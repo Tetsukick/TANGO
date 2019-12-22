@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'TangoListDetailScreen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(HomeScreen());
 
-class MyApp extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -118,7 +119,7 @@ class TangoGroupsListView extends StatelessWidget{
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                    MaterialPageRoute(builder: (context) => TangoListDetailScreen()),
                   );
                 }
               );
@@ -162,24 +163,5 @@ class TangoGroupsListView extends StatelessWidget{
             );
           },
         ));
-  }
-}
-
-class SecondRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Route"),
-      ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: Text('Go back!'),
-        ),
-      ),
-    );
   }
 }
