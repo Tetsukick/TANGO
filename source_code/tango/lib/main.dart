@@ -115,9 +115,12 @@ class TangoGroupsListView extends StatelessWidget{
                     ),
                   ),
                 ),
-                onTap: () => Scaffold
-                    .of(context)
-                    .showSnackBar(SnackBar(content: Text(index.toString()))),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                  );
+                }
               );
             }
 
@@ -159,5 +162,24 @@ class TangoGroupsListView extends StatelessWidget{
             );
           },
         ));
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: Text('Go back!'),
+        ),
+      ),
+    );
   }
 }
