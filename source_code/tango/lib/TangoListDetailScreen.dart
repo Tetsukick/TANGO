@@ -61,6 +61,42 @@ class ListState extends State<TangoListDetailWidget> {
       appBar: Header(),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
+
+          if (index == 0) {
+            return Container(
+                width: 375,
+                height: 110,
+                decoration: new BoxDecoration(
+                    color: Color(0xff098a8c),
+                    border: Border.all(
+                        color: Color(0xff098a8c),
+                        width: 1
+                    )
+                ),
+                child: Container(
+                  margin: EdgeInsets.only(right: 10, bottom: 10),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      verticalDirection: VerticalDirection.up,
+                      textDirection: TextDirection.rtl,
+                      children: [
+                        Text("Title",
+                          style: TextStyle(
+                            fontFamily: 'SFProDisplay',
+                            color: Color(0xffffffff),
+                            fontSize: 30,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            letterSpacing: 0.0075,
+                          ),
+                          textAlign: TextAlign.right,
+                        ),
+                      ]
+                  ),
+                ),
+            );
+          }
+
           return Container(
               decoration: BoxDecoration(
                 border: Border(
@@ -69,10 +105,10 @@ class ListState extends State<TangoListDetailWidget> {
               ),
               child: ListTile(
                 trailing: Image.asset('assets/right_detail_grey.png'),
-                title: Text('$index'),
+                title: Text(listItem[index - 1]),
                 onTap: () { /* react to the tile being tapped */ },
               ));},
-        itemCount: listItem.length,
+        itemCount: listItem.length + 1,
       ),
     );
   }
