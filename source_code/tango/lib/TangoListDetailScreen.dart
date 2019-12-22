@@ -4,15 +4,7 @@ class TangoListDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Header(),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: Text('Go back!'),
-        ),
-      ),
+      body: TangoListDetailWidget(),
     );
   }
 }
@@ -52,3 +44,37 @@ class Header extends StatelessWidget with PreferredSizeWidget{
     );
   }
 }
+
+class TangoListDetailWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return ListState();
+  }
+}
+
+class ListState extends State<TangoListDetailWidget> {
+  var listItem = ['one', 'two', 'three'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: Header(),
+      body: ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.black38),
+                ),
+              ),
+              child: ListTile(
+                trailing: Image.asset('assets/right_detail_grey.png'),
+                title: Text('$index'),
+                onTap: () { /* react to the tile being tapped */ },
+              ));},
+        itemCount: listItem.length,
+      ),
+    );
+  }
+}
+
