@@ -77,42 +77,47 @@ class TangoGroupsListView extends StatelessWidget{
           itemBuilder: (BuildContext context, int index) {
 
             if (index == 0) {
-              return Container(
-                margin: EdgeInsets.only(bottom: 20.0),
-                height: 97,
-                decoration: new BoxDecoration(
-                  boxShadow: [BoxShadow(
-                      color: Color(0x29000000),
-                      offset: Offset(0,3),
-                      blurRadius: 6,
-                      spreadRadius: 0
+              return GestureDetector(
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 20.0),
+                  height: 97,
+                  decoration: new BoxDecoration(
+                    boxShadow: [BoxShadow(
+                        color: Color(0x29000000),
+                        offset: Offset(0,3),
+                        blurRadius: 6,
+                        spreadRadius: 0
 
-                  ) ],
+                    ) ],
 
-                ),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
-                  child: Container(
-                      decoration: new BoxDecoration(
-                        color: Color(0xffffffff),
-                        border: Border.all(
-                            color: Color(0xff007aff),
-                            width: 0.5
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Container(
+                        decoration: new BoxDecoration(
+                          color: Color(0xffffffff),
+                          border: Border.all(
+                              color: Color(0xff007aff),
+                              width: 0.5
+                          ),
                         ),
-                      ),
-                      child: Center(
-                        child: Text(
-                            '+ Add',
-                            style: TextStyle(
-                              color: Colors.blueAccent,
-                              fontSize: 25,
-                            )
-                        ),
-                      )
+                        child: Center(
+                          child: Text(
+                              '+ Add',
+                              style: TextStyle(
+                                color: Colors.blueAccent,
+                                fontSize: 25,
+                              )
+                          ),
+                        )
+                    ),
                   ),
                 ),
+                onTap: () => Scaffold
+                    .of(context)
+                    .showSnackBar(SnackBar(content: Text(index.toString()))),
               );
             }
 
