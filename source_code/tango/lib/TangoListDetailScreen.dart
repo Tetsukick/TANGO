@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'TangoScreen.dart';
 
 class TangoListDetailScreen extends StatelessWidget {
   @override
@@ -106,7 +107,12 @@ class ListState extends State<TangoListDetailWidget> {
               child: ListTile(
                 trailing: Image.asset('assets/right_detail_grey.png'),
                 title: Text(listItem[index - 1]),
-                onTap: () { /* react to the tile being tapped */ },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TangoScreen()),
+                  );
+                },
               ));},
         itemCount: listItem.length + 1,
       ),
