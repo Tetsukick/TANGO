@@ -55,13 +55,46 @@ class TangoWidget extends StatefulWidget {
 }
 
 class TangoState extends State<TangoWidget> {
-  var listItem = ['one', 'two', 'three'];
+  var front = 'FRONT';
+  var back = 'BACK';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Header(),
-      body: Container(),
+      body: Container(
+        alignment: Alignment.center,
+        child: Text(
+            front,
+          style: TextStyle(
+            fontFamily: 'SFProDisplay',
+            color: Colors.black,
+            fontSize: 40,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            letterSpacing: 0.0075,
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              margin: EdgeInsets.all(15),
+              child: Image.asset('assets/left_arrow_big.png'),
+            ),
+            Container(
+              margin: EdgeInsets.all(15),
+              child: Image.asset('assets/return.png'),
+            ),
+            Container(
+              margin: EdgeInsets.all(15),
+              child: Image.asset('assets/right_arrow_big.png'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
