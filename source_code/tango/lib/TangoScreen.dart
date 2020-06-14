@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TangoScreen extends StatelessWidget {
+  TangoScreen({this.categoryName, this.categoryID});
+  final String categoryName;
+  final String categoryID;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +53,10 @@ class Header extends StatelessWidget with PreferredSizeWidget{
 }
 
 class TangoWidget extends StatefulWidget {
+  TangoWidget({this.categoryName, this.categoryID});
+  final String categoryName;
+  final String categoryID;
+
   @override
   State<StatefulWidget> createState() {
     return TangoState();
@@ -55,46 +64,84 @@ class TangoWidget extends StatefulWidget {
 }
 
 class TangoState extends State<TangoWidget> {
-  var front = 'FRONT';
-  var back = 'BACK';
+  TangoState({this.categoryName, this.categoryID});
+  final String categoryName;
+  final String categoryID;
+  int currentIndex = 0;
+  bool isFront = true;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: Header(),
-      body: Container(
-        alignment: Alignment.center,
-        child: Text(
-            front,
-          style: TextStyle(
-            fontFamily: 'SFProDisplay',
-            color: Colors.black,
-            fontSize: 40,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-            letterSpacing: 0.0075,
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              margin: EdgeInsets.all(15),
-              child: Image.asset('assets/left_arrow_big.png'),
-            ),
-            Container(
-              margin: EdgeInsets.all(15),
-              child: Image.asset('assets/return.png'),
-            ),
-            Container(
-              margin: EdgeInsets.all(15),
-              child: Image.asset('assets/right_arrow_big.png'),
-            ),
-          ],
-        ),
-      ),
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('words').where('categories', arrayContains: categoryID).snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError)
+          return new Text('Error: ${snapshot.error}');
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting: return new Text('Loading...');
+          default:
+            List<DocumentSnapshot> words = snapshot.data.documents;
+            return Scaffold(
+              appBar: Header(),
+              body: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  isFront ? words[currentIndex]["indonesia"] : words[currentIndex]["japanese"],
+                  style: TextStyle(
+                    fontFamily: 'SFProDisplay',
+                    color: Colors.black,
+                    fontSize: 40,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                    letterSpacing: 0.0075,
+                  ),
+                ),
+              ),
+              bottomNavigationBar: BottomAppBar(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      child: Container(
+                        margin: EdgeInsets.all(15),
+                        child: Image.asset('assets/left_arrow_big.png'),
+                      ),
+                      onTap: currentIndex == 0 ? null : () {
+                        setState(() {
+                          isFront = true;
+                          currentIndex--;
+                        });
+                      },
+                    ),
+                    GestureDetector(
+                      child: Container(
+                        margin: EdgeInsets.all(15),
+                        child: Image.asset('assets/return.png'),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          isFront = !isFront;
+                        });
+                      },
+                    ),
+                    GestureDetector(
+                      child: Container(
+                        margin: EdgeInsets.all(15),
+                        child: Image.asset('assets/right_arrow_big.png'),
+                      ),
+                      onTap: currentIndex + 1 >= words.length ? null : () {
+                        setState(() {
+                          isFront = true;
+                          currentIndex++;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            );
+        }
+      },
     );
   }
 }
