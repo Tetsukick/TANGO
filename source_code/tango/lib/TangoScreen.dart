@@ -29,17 +29,14 @@ class Header extends StatelessWidget with PreferredSizeWidget{
           padding: const EdgeInsets.only(right: 16.0),
           child: Row(
             children: [
-              Container(
-                margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                child: Image.asset('assets/trash.png'),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                child: Image.asset('assets/pen.png'),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 5.0, right: 5.0),
-                child: Image.asset('assets/checkmark_lightgrey.png'),
+              GestureDetector(
+                child: Container(
+                  margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                  child: Image.asset('assets/checkmark_lightgrey.png'),
+                ),
+                onTap: () {
+                  
+                },
               ),
             ],
           )
