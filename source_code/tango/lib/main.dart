@@ -72,54 +72,54 @@ class TangoGroupsListView extends StatelessWidget{
                 List<DocumentSnapshot> categolies = snapshot.data.documents;
                 return ListView.builder(
                   padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  itemCount: categolies.length + 1,
+                  itemCount: categolies.length,
                   itemBuilder: (BuildContext context, int index) {
 
-                    if (index == 0) {
-                      return GestureDetector(
-                          child: Container(
-                            margin: EdgeInsets.only(bottom: 20.0),
-                            height: 97,
-                            decoration: new BoxDecoration(
-                              boxShadow: [BoxShadow(
-                                  color: Color(0x29000000),
-                                  offset: Offset(0,3),
-                                  blurRadius: 6,
-                                  spreadRadius: 0
-                              ) ],
-                            ),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Container(
-                                  decoration: new BoxDecoration(
-                                    color: Color(0xffffffff),
-                                    border: Border.all(
-                                        color: Color(0xff007aff),
-                                        width: 0.5
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                        '+ Add',
-                                        style: TextStyle(
-                                          color: Colors.blueAccent,
-                                          fontSize: 25,
-                                        )
-                                    ),
-                                  )
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => TangoListDetailScreen()),
-                            );
-                          }
-                      );
-                    }
+//                    if (index == 0) {
+//                      return GestureDetector(
+//                          child: Container(
+//                            margin: EdgeInsets.only(bottom: 20.0),
+//                            height: 97,
+//                            decoration: new BoxDecoration(
+//                              boxShadow: [BoxShadow(
+//                                  color: Color(0x29000000),
+//                                  offset: Offset(0,3),
+//                                  blurRadius: 6,
+//                                  spreadRadius: 0
+//                              ) ],
+//                            ),
+//                            child: Card(
+//                              shape: RoundedRectangleBorder(
+//                                borderRadius: BorderRadius.all(Radius.circular(10)),
+//                              ),
+//                              child: Container(
+//                                  decoration: new BoxDecoration(
+//                                    color: Color(0xffffffff),
+//                                    border: Border.all(
+//                                        color: Color(0xff007aff),
+//                                        width: 0.5
+//                                    ),
+//                                  ),
+//                                  child: Center(
+//                                    child: Text(
+//                                        '+ Add',
+//                                        style: TextStyle(
+//                                          color: Colors.blueAccent,
+//                                          fontSize: 25,
+//                                        )
+//                                    ),
+//                                  )
+//                              ),
+//                            ),
+//                          ),
+//                          onTap: () {
+//                            Navigator.push(
+//                              context,
+//                              MaterialPageRoute(builder: (context) => TangoListDetailScreen()),
+//                            );
+//                          }
+//                      );
+//                    }
 
                     return GestureDetector(
                       child: Container(
@@ -147,7 +147,7 @@ class TangoGroupsListView extends StatelessWidget{
                               ),
                               child: Center(
                                 child: Text(
-                                    categolies[index - 1]["name"],
+                                    categolies[index]["name"],
                                     style: TextStyle(
                                       fontSize: 25,
                                     )
@@ -159,7 +159,7 @@ class TangoGroupsListView extends StatelessWidget{
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => TangoListDetailScreen(categoryName: categolies[index - 1]["name"], categoryID: categolies[index - 1].documentID,)),
+                          MaterialPageRoute(builder: (context) => TangoListDetailScreen(categoryName: categolies[index]["name"], categoryID: categolies[index].documentID,)),
                         );
                       }
                     );
