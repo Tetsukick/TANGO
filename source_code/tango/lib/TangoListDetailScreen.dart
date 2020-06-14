@@ -28,18 +28,6 @@ class Header extends StatelessWidget with PreferredSizeWidget{
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            'Edit',
-            style: TextStyle(
-              color: Colors.blueAccent,
-              fontSize: 18,
-            ),
-          ),
-        ),
-      ],
       title: Text(
         title ?? '',
         style: TextStyle(
