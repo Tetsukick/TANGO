@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "352975752855",
+    "firebase_url": "https://tango-e5fc2.firebaseio.com",
+    "project_id": "tango-e5fc2",
+    "storage_bucket": "tango-e5fc2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352975752855:android:ee59ddf8856009e644e3d2",
+        "android_client_info": {
+          "package_name": "com.tetsukick.tango"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352975752855-dpqf6q213fi99dm3c1mvdq9kicp2sut6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiUPxvOVscJtkN1tG2Y_MflbqNyE2tbWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352975752855-dpqf6q213fi99dm3c1mvdq9kicp2sut6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "352975752855-b016dt8a1r20jadc8i6cikm4aofadm66.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tetsukick.tango"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
