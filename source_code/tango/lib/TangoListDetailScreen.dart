@@ -92,16 +92,19 @@ class ListState extends State<TangoListDetailWidget> {
                             verticalDirection: VerticalDirection.up,
                             textDirection: TextDirection.rtl,
                             children: [
-                              Text("Title",
-                                style: TextStyle(
-                                  fontFamily: 'SFProDisplay',
-                                  color: Color(0xffffffff),
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w400,
-                                  fontStyle: FontStyle.normal,
-                                  letterSpacing: 0.0075,
+                              Expanded(
+                                child: Text(categoryName,
+                                  style: TextStyle(
+                                    fontFamily: 'SFProDisplay',
+                                    color: Color(0xffffffff),
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w400,
+                                    fontStyle: FontStyle.normal,
+                                    letterSpacing: 0.0075,
+                                  ),
+                                  textAlign: TextAlign.right,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                textAlign: TextAlign.right,
                               ),
                             ]
                         ),
@@ -117,7 +120,10 @@ class ListState extends State<TangoListDetailWidget> {
                       ),
                       child: ListTile(
                         trailing: Image.asset('assets/right_detail_grey.png'),
-                        title: Text(words[index - 1]["indonesia"]),
+                        title: Text(
+                          words[index - 1]["indonesia"],
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         onTap: () {
                           Navigator.push(
                             context,

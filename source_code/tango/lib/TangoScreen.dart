@@ -95,6 +95,7 @@ class TangoState extends State<TangoWidget> {
                     fontStyle: FontStyle.normal,
                     letterSpacing: 0.0075,
                   ),
+                  overflow: TextOverflow.visible,
                 ),
               ),
               bottomNavigationBar: BottomAppBar(
