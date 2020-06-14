@@ -24,18 +24,6 @@ class Header extends StatelessWidget with PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      actions: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-              'Edit',
-            style: TextStyle(
-              color: Colors.blueAccent,
-              fontSize: 18,
-            ),
-          ),
-        ),
-      ],
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
