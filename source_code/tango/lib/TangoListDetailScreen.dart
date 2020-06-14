@@ -127,7 +127,7 @@ class ListState extends State<TangoListDetailWidget> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => TangoScreen()),
+                            MaterialPageRoute(builder: (context) => TangoScreen(categoryName: categoryName, categoryID: categoryID, currentIndex: index - 1,)),
                           );
                         },
                       ));},

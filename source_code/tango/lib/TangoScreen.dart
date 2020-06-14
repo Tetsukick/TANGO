@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TangoScreen extends StatelessWidget {
-  TangoScreen({this.categoryName, this.categoryID});
+  TangoScreen({this.categoryName, this.categoryID, this.currentIndex});
   final String categoryName;
   final String categoryID;
+  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TangoWidget(),
+      body: TangoWidget(categoryName: categoryName, categoryID: categoryID, currentIndex: currentIndex),
     );
   }
 }
@@ -35,7 +36,7 @@ class Header extends StatelessWidget with PreferredSizeWidget{
                   child: Image.asset('assets/checkmark_lightgrey.png'),
                 ),
                 onTap: () {
-                  
+
                 },
               ),
             ],
@@ -50,18 +51,19 @@ class Header extends StatelessWidget with PreferredSizeWidget{
 }
 
 class TangoWidget extends StatefulWidget {
-  TangoWidget({this.categoryName, this.categoryID});
+  TangoWidget({this.categoryName, this.categoryID, this.currentIndex});
   final String categoryName;
   final String categoryID;
+  final int currentIndex;
 
   @override
   State<StatefulWidget> createState() {
-    return TangoState();
+    return TangoState(categoryName: categoryName, categoryID: categoryID, currentIndex: currentIndex);
   }
 }
 
 class TangoState extends State<TangoWidget> {
-  TangoState({this.categoryName, this.categoryID});
+  TangoState({this.categoryName, this.categoryID, this.currentIndex});
   final String categoryName;
   final String categoryID;
   int currentIndex = 0;
