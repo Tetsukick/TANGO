@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'TangoListDetailScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(HomeScreen());
+void main() {
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  runApp(HomeScreen());
+};
 
 class HomeScreen extends StatelessWidget {
   @override
