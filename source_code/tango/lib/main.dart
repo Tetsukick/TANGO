@@ -11,7 +11,7 @@ void main() {
   ]);
 
   runApp(HomeScreen());
-};
+}
 
 class HomeScreen extends StatelessWidget {
   @override
